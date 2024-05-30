@@ -35,7 +35,7 @@ const uploadSingleImage = upload.single("image");
 router.post("/", (req, res) => {
   uploadSingleImage(req, res, (err) => {
     if (err) {
-      res.status(400).send({ message: err.message });
+      res.status(400).send({ message: err?.message });
     } else if (req.file) {
       res.status(200).send({
         message: "Image uploaded successfully",

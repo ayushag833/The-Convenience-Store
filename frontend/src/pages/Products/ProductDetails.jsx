@@ -54,7 +54,7 @@ const ProductDetails = () => {
       refetch();
       toast.success("Review created successfully");
     } catch (error) {
-      toast.error(error?.data || error.message);
+      toast.error(error?.data || error?.message);
     }
   };
 
@@ -78,7 +78,7 @@ const ProductDetails = () => {
         <Loader />
       ) : error ? (
         <Message variant="danger">
-          {error?.data?.message || error.message}
+          {error?.data?.message || error?.message}
         </Message>
       ) : (
         <>

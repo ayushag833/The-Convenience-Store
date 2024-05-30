@@ -26,7 +26,7 @@ const addProduct = asyncHandler(async (req, res) => {
     res.json(product);
   } catch (error) {
     console.error(error);
-    res.status(400).json(error.message);
+    res.status(400).json(error?.message);
   }
 });
 
@@ -61,7 +61,7 @@ const updateProductDetails = asyncHandler(async (req, res) => {
     res.json(product);
   } catch (error) {
     console.error(error);
-    res.status(400).json(error.message);
+    res.status(400).json(error?.message);
   }
 });
 
@@ -165,7 +165,7 @@ const addProductReview = asyncHandler(async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-    res.status(400).json(error.message);
+    res.status(400).json(error?.message);
   }
 });
 
@@ -175,7 +175,7 @@ const fetchTopProducts = asyncHandler(async (req, res) => {
     res.json(products);
   } catch (error) {
     console.error(error);
-    res.status(400).json(error.message);
+    res.status(400).json(error?.message);
   }
 });
 
@@ -185,7 +185,7 @@ const fetchNewProducts = asyncHandler(async (req, res) => {
     res.json(products);
   } catch (error) {
     console.error(error);
-    res.status(400).json(error.message);
+    res.status(400).json(error?.message);
   }
 });
 

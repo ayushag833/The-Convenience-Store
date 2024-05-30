@@ -58,7 +58,7 @@ const ProductList = () => {
 
     try {
       const res = await uploadProductImage(formData).unwrap();
-      toast.success(res.message);
+      toast.success(res?.message);
       setImage(res.image);
       setImageUrl(res.image);
     } catch (error) {
