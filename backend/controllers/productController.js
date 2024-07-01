@@ -49,13 +49,11 @@ const updateProductDetails = asyncHandler(async (req, res) => {
       case !quantity:
         return res.json({ error: "Quantity is required" });
     }
-
     const product = await Product.findByIdAndUpdate(
       req.params.id,
       { ...req.fields },
       { new: true }
     );
-
     await product.save();
 
     res.json(product);
@@ -191,11 +189,11 @@ const fetchNewProducts = asyncHandler(async (req, res) => {
 
 const filterProducts = asyncHandler(async (req, res) => {
   try {
-    const { checked, radio } = req.body;
-
+    // const { checked, radio } = req.body;
+    const { checked } = req.body;
     let args = {};
     if (checked.length > 0) args.category = checked;
-    if (radio.length) args.price = { $gte: radio[0], $lte: radio[1] };
+    // if (radio.length) args.price = { $gte: radio[0], $lte: radio[1] };
 
     const products = await Product.find(args);
     res.json(products);

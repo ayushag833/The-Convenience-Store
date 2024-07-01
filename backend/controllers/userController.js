@@ -34,23 +34,32 @@ const createUser = asyncHandler(async (req, res) => {
 });
 
 const loginUser = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
-  const existingUser = await User.findOne({ email });
-  if (existingUser) {
-    const isPasswordValid = await bcrypt.compare(
-      password,
-      existingUser.password
-    );
-    if (isPasswordValid) {
-      createToken(res, existingUser._id);
+  try {
+    const { email, password } = req.body;
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      const isPasswordValid = await bcrypt.compare(
+        password,
+        existingUser.password
+      );
+      if (isPasswordValid) {
+        createToken(res, existingUser._id);
 
-      res.status(200).json({
-        _id: existingUser._id,
-        username: existingUser.username,
-        email: existingUser.email,
-        isAdmin: existingUser.isAdmin,
-      });
+        res.status(200).json({
+          _id: existingUser._id,
+          username: existingUser.username,
+          email: existingUser.email,
+          isAdmin: existingUser.isAdmin,
+        });
+      } else {
+        res.send("Invalid Password");
+      }
+    } else {
+      res.send("Invalid Email");
     }
+  } catch (error) {
+    res.status(400);
+    throw new Error("Invalid user data");
   }
 });
 

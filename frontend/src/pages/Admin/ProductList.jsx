@@ -9,11 +9,13 @@ import { toast } from "react-toastify";
 import AdminMenu from "./AdminMenu";
 
 const ProductList = () => {
+  const { data: categories } = useFetchCategoriesQuery();
+
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState(categories[0]._id);
   const [quantity, setQuantity] = useState("");
   const [brand, setBrand] = useState("");
   const [stock, setStock] = useState(0);
@@ -22,7 +24,6 @@ const ProductList = () => {
 
   const [uploadProductImage] = useUploadProductImageMutation();
   const [createProduct] = useCreateProductMutation();
-  const { data: categories } = useFetchCategoriesQuery();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,6 +43,7 @@ const ProductList = () => {
 
       if (data.error) {
         toast.error("Product create failed. Try Again.");
+        console.log(data);
       } else {
         toast.success(`${data.name} is created`);
         navigate("/");

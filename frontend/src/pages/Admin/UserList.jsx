@@ -62,7 +62,7 @@ const UserList = () => {
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <Message variant="error">{error?.data?.message || error.error}</Message>
+        <Message variant="error">{error?.data?.data || error.error}</Message>
       ) : (
         <div className="flex flex-col md:flex-row">
           <AdminMenu />
