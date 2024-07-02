@@ -9,7 +9,7 @@ const generateToken = (res, userId) => {
 
   try {
     res.cookie("Token", token, {
-      domain: "the-convenience-store.onrender.com",
+      domain: ".onrender.com",
       httpOnly: true,
       secure: true,
       sameSite: "None",
