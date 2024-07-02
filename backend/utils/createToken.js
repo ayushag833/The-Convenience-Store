@@ -6,12 +6,18 @@ const generateToken = (res, userId) => {
   });
 
   console.log(token);
-  res.cookie("JWT", token, {
-    httpOnly: false,
-    secure: false,
-    sameSite: "None",
-    maxAge: 30 * 24 * 60 * 60 * 1000,
-  });
+  res
+    .cookie("JWT", token, {
+      httpOnly: false,
+      secure: false,
+      sameSite: "None",
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+    })
+    .status(200)
+    .json({
+      success: true,
+      message: "User logged in successfully",
+    });
 
   return token;
 };
