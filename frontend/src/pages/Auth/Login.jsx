@@ -35,6 +35,7 @@ const Login = () => {
       navigate(redirect);
     } catch (err) {
       toast.error(err?.data || err.error);
+      console.log(err);
     }
   };
 

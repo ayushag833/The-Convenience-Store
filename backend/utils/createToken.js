@@ -7,13 +7,19 @@ const generateToken = (res, userId) => {
 
   console.log(token);
 
-  return res
-    .cookie("Token", token, {
-      secure: true,
-      sameSite: "none",
-    })
-    .status(200)
-    .send("user logged in successfully");
+  try {
+    return res
+      .cookie("Token", token, {
+        secure: true,
+        sameSite: "none",
+      })
+      .status(200)
+      .send("user logged in successfully");
+  } catch (error) {
+    console.error("Error setting cookie or sending response:", error);
+    return res.status(500).send("Internal Server Error");
+  }
+
   // return res.cookie("Token", token, {
   //   httpOnly: true,
   //   secure: process.env.NODE_ENV !== "development",
