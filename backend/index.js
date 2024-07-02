@@ -16,8 +16,6 @@ import orderRoutes from "./routes/orderRoutes.js";
 
 const port = process.env.PORT || 5000;
 
-console.log(process.env.JWT_SECRET);
-
 connectDB();
 
 const app = express();
