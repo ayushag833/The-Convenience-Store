@@ -11,8 +11,8 @@ const generateToken = (res, userId) => {
     res.cookie("Token", token, {
       domain: "the-convenience-store.onrender.com",
       httpOnly: true,
-      secure: secure,
-      sameSite: "strict",
+      secure: true,
+      sameSite: "None",
       maxAge: 30 * 24 * 60 * 60 * 1000,
     });
     console.log("Setting up the Token");
