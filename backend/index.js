@@ -22,7 +22,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://the-convenience-store.netlify.app",
+    origin: "http://localhost:5173/",
   })
 );
 
