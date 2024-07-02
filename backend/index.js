@@ -1,6 +1,8 @@
+import dotenv from "dotenv";
+dotenv.config({ path: "./backend/.env" });
+
 // packages
 import express from "express";
-import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
@@ -12,18 +14,17 @@ import productRoutes from "./routes/productRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 
-dotenv.config();
 const port = process.env.PORT || 5000;
 
 connectDB();
 
 const app = express();
 
-app.use(
-  cors({
-    origin: "https://the-convenience-store.netlify.app",
-  })
-);
+// app.use(
+//   cors({
+//     origin: "https://the-convenience-store.netlify.app",
+//   })
+// );
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

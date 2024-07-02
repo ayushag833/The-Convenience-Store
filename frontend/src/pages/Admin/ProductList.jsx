@@ -15,7 +15,7 @@ const ProductList = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [category, setCategory] = useState(categories[0]._id);
+  const [category, setCategory] = useState(categories ? categories[0]._id : "");
   const [quantity, setQuantity] = useState("");
   const [brand, setBrand] = useState("");
   const [stock, setStock] = useState(0);
@@ -41,11 +41,11 @@ const ProductList = () => {
 
       const { data } = await createProduct(productData);
 
-      if (data.error) {
+      if (data?.error) {
         toast.error("Product create failed. Try Again.");
         console.log(data);
       } else {
-        toast.success(`${data.name} is created`);
+        toast.success(`${data?.name} is created`);
         navigate("/");
       }
     } catch (error) {
