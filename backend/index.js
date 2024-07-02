@@ -20,11 +20,11 @@ connectDB();
 
 const app = express();
 
-// app.use(
-//   cors({
-//     origin: "https://the-convenience-store.netlify.app",
-//   })
-// );
+app.use(
+  cors({
+    origin: "https://the-convenience-store.netlify.app",
+  })
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
