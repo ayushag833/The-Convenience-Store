@@ -5,22 +5,14 @@ const generateToken = (res, userId) => {
     expiresIn: "30d",
   });
 
-  console.log(token);
+  res.cookie("JWT", token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV !== "development",
+    sameSite: "strict",
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+  });
 
-  try {
-    res.cookie("Token", token);
-    console.log("Setting up the Token");
-  } catch (error) {
-    console.error("Error setting cookie or sending response:", error);
-    throw new Error("Failed in setting up the cookie");
-  }
-
-  // return res.cookie("Token", token, {
-  //   httpOnly: true,
-  //   secure: process.env.NODE_ENV !== "development",
-  //   sameSite: "strict",
-  //   maxAge: 30 * 24 * 60 * 60 * 1000,
-  // });
+  return token;
 };
 
 export default generateToken;

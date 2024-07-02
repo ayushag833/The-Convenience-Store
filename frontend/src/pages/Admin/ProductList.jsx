@@ -18,7 +18,7 @@ const ProductList = () => {
   const [category, setCategory] = useState(categories ? categories[0]._id : "");
   const [quantity, setQuantity] = useState("");
   const [brand, setBrand] = useState("");
-  const [stock, setStock] = useState(0);
+  const [stock, setStock] = useState("");
   const [imageUrl, setImageUrl] = useState(null);
   const navigate = useNavigate();
 

@@ -159,18 +159,18 @@ const Shop = () => {
             </div>
           </div>
 
-          <div className="p-3">
-            <h2 className="h4 text-center mb-2">{products?.length} Products</h2>
+          <div className="p-3 w-full flex justify-center flex-wrap">
+            <h2 className="text-center mb-2 mr-2">
+              {products?.length} Products <br />
+            </h2>
             <div className="flex flex-wrap">
-              {products.length === 0 ? (
-                <Loader />
-              ) : (
-                products?.map((p) => (
-                  <div className="p-3" key={p._id}>
-                    <ProductCard p={p} />
-                  </div>
-                ))
-              )}
+              {products.length === 0
+                ? "Sorry, No Products Found!"
+                : products?.map((p) => (
+                    <div className="p-3" key={p._id}>
+                      <ProductCard p={p} />
+                    </div>
+                  ))}
             </div>
           </div>
         </div>

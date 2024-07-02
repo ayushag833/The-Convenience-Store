@@ -5,7 +5,6 @@ import AdminMenu from "./AdminMenu";
 
 const AllProducts = () => {
   const { data: products, isLoading, isError } = useAllProductsQuery();
-
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -16,9 +15,9 @@ const AllProducts = () => {
 
   return (
     <>
-      <div className="mx-[9rem]">
-        <div className="flex flex-col  md:flex-row">
-          <div className="p-3">
+      <div className="ml-[6rem]">
+        <div className="flex flex-col md:flex-row">
+          <div className="mr-[0.5rem]">
             <div className="ml-[2rem] text-xl font-bold h-12">
               All Products ({products.length})
             </div>
@@ -51,10 +50,7 @@ const AllProducts = () => {
                       </p>
 
                       <div className="flex justify-between">
-                        <Link
-                          to={`/admin/product/update/${product._id}`}
-                          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-pink-700 rounded-lg hover:bg-pink-800 focus:ring-4 focus:outline-none focus:ring-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800"
-                        >
+                        <div className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-pink-700 rounded-lg hover:bg-pink-800 focus:ring-4 focus:outline-none focus:ring-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800">
                           Update/Delete Product
                           <svg
                             className="w-3.5 h-3.5 ml-2"
@@ -71,7 +67,7 @@ const AllProducts = () => {
                               d="M1 5h12m0 0L9 1m4 4L9 9"
                             />
                           </svg>
-                        </Link>
+                        </div>
                         <p>$ {product?.price}</p>
                       </div>
                     </div>
