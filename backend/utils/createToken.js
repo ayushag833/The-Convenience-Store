@@ -8,13 +8,11 @@ const generateToken = (res, userId) => {
   console.log(token);
 
   try {
-    res.cookie("Token", token, {
-      secure: true,
-      sameSite: "none",
-    });
+    res.cookie("Token", token);
+    console.log("Setting up the Token");
   } catch (error) {
     console.error("Error setting cookie or sending response:", error);
-    return res.status(500).send("Internal Server Error");
+    throw new Error("Failed in setting up the cookie");
   }
 
   // return res.cookie("Token", token, {
@@ -23,14 +21,6 @@ const generateToken = (res, userId) => {
   //   sameSite: "strict",
   //   maxAge: 30 * 24 * 60 * 60 * 1000,
   // });
-
-  // return res
-  //     .cookie("accessToken", accessToken, {
-  //       sameSite: "none",
-  //       secure: true,
-  //     })
-  //     .status(200)
-  //     .send(userDetails);
 };
 
 export default generateToken;
