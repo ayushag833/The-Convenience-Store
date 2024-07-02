@@ -20,13 +20,15 @@ connectDB();
 
 const app = express();
 
-app.use(
-  cors({
-    origin: ["https://the-convenience-store-frontend.onrender.com/"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: ["https://the-convenience-store-frontend.onrender.com/"],
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     credentials: true,
+//   })
+// );
+
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
