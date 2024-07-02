@@ -15,7 +15,8 @@ import uploadRoutes from "./routes/uploadRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 
 const port = process.env.PORT || 5000;
-
+console.log(process.env.JWT_SECRET);
+console.log(process.env.NODE_ENV);
 connectDB();
 
 const app = express();

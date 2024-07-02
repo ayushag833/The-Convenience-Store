@@ -4,18 +4,15 @@ const generateToken = (res, userId) => {
   const token = JWT.sign({ userId }, process.env.JWT_SECRET, {
     expiresIn: "30d",
   });
-  console.log(process.env.JWT_SECRET);
 
-  // Set JWT as an HTTP Only Cookie
-  res.cookie("JWT", token, {
-    httpOnly: true,
-    // secure: process.env.NODE_ENV !== "development",
-    secure: true,
-    sameSite: "strict",
-    maxAge: 30 * 24 * 60 * 60 * 1000,
-  });
-  // res.cookie("JWT", token);
-  console.log(token);
+  res.cookie("JWT", token);
+  // res.cookie("JWT", token, {
+  //   httpOnly: true,
+  //   secure: process.env.NODE_ENV !== "development",
+  //   sameSite: "strict",
+  //   maxAge: 30 * 24 * 60 * 60 * 1000,
+  // });
+
   return token;
 };
 
