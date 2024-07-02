@@ -22,8 +22,8 @@ const AdminDashboard = () => {
       chart: {
         type: "line",
       },
-      tooltip: {
-        theme: "dark",
+      theme: {
+        mode: "dark",
       },
       colors: ["#00E396"],
       dataLabels: {
@@ -43,6 +43,7 @@ const AdminDashboard = () => {
         size: 1,
       },
       xaxis: {
+        type: "category",
         categories: [],
         title: {
           text: "Date",
@@ -55,6 +56,7 @@ const AdminDashboard = () => {
         min: 0,
       },
       legend: {
+        showForSingleSeries: true,
         position: "top",
         horizontalAlign: "right",
         floating: true,
@@ -66,11 +68,13 @@ const AdminDashboard = () => {
   });
 
   useEffect(() => {
+    console.log(salesDetail);
     if (salesDetail) {
       const formattedSalesDate = salesDetail.map((item) => ({
         x: item._id,
         y: item.totalSales,
       }));
+      console.log(formattedSalesDate);
 
       setState((prevState) => ({
         ...prevState,
@@ -80,7 +84,6 @@ const AdminDashboard = () => {
             categories: formattedSalesDate.map((item) => item.x),
           },
         },
-
         series: [
           { name: "Sales", data: formattedSalesDate.map((item) => item.y) },
         ],

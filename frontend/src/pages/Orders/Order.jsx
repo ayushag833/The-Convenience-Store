@@ -14,8 +14,6 @@ import {
 
 const Order = () => {
   const { id: orderId } = useParams();
-  const params = useParams();
-  console.log(params);
 
   const {
     data: order,
@@ -43,7 +41,7 @@ const Order = () => {
         paypalDispatch({
           type: "resetOptions",
           value: {
-            "client-id": paypal.clientId,
+            clientId: paypal.clientId,
             currency: "USD",
           },
         });
@@ -170,7 +168,9 @@ const Order = () => {
           </p>
 
           {order.isPaid ? (
-            <Messsage variant="success">Paid on {order.paidAt}</Messsage>
+            <Messsage variant="success">
+              Paid on {order.paidAt.substring(0, 10)}
+            </Messsage>
           ) : (
             <Messsage variant="error">Not paid</Messsage>
           )}
