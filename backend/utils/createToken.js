@@ -8,13 +8,7 @@ const generateToken = (res, userId) => {
   console.log(token);
 
   try {
-    res.cookie("Token", token, {
-      domain: ".onrender.com",
-      httpOnly: true,
-      secure: true,
-      sameSite: "None",
-      maxAge: 30 * 24 * 60 * 60 * 1000,
-    });
+    res.cookie("Token", token);
     console.log("Setting up the Token");
   } catch (error) {
     console.error("Error setting cookie or sending response:", error);
