@@ -7,7 +7,6 @@ import {
   setProducts,
   setChecked,
 } from "../redux/features/shop/shopSlice";
-import Loader from "../components/Loader";
 import ProductCard from "./Products/ProductCard";
 
 const Shop = () => {
@@ -91,7 +90,7 @@ const Shop = () => {
             <div className="p-5 w-[15rem]">
               {categories?.map((c) => (
                 <div key={c._id} className="mb-2">
-                  <div className="flex items-center mr-4">
+                  <div className="flex items-center mr-4 mb-3">
                     <input
                       type="checkbox"
                       id="red-checkbox"
@@ -116,7 +115,7 @@ const Shop = () => {
 
             <div className="p-5">
               {uniqueBrands?.map((brand) => (
-                <div className="flex items-enter mr-4 mb-5" key={brand._id}>
+                <div className="flex items-enter mr-4 mb-3" key={brand._id}>
                   <input
                     type="radio"
                     id={brand}
@@ -159,18 +158,20 @@ const Shop = () => {
             </div>
           </div>
 
-          <div className="p-3 w-full flex justify-center flex-wrap">
-            <h2 className="text-center mb-2 mr-2">
-              {products?.length} Products <br />
-            </h2>
-            <div className="flex flex-wrap">
-              {products.length === 0
-                ? "Sorry, No Products Found!"
-                : products?.map((p) => (
-                    <div className="p-3" key={p._id}>
-                      <ProductCard p={p} />
-                    </div>
-                  ))}
+          <div className="p-3 w-full">
+            <div className="flex justify-center flex-wrap">
+              <h2 className="text-center mb-2 mr-2 w-full h-5">
+                {products?.length} Products
+              </h2>
+              <div className="flex flex-wrap">
+                {products.length === 0
+                  ? "Sorry, No Products Found!"
+                  : products?.map((p) => (
+                      <div className="p-3" key={p._id}>
+                        <ProductCard p={p} />
+                      </div>
+                    ))}
+              </div>
             </div>
           </div>
         </div>
