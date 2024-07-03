@@ -11,6 +11,9 @@ const Home = () => {
 
   return (
     <>
+      <h1 className="text-center text-[3rem] mt-[1rem] mb-[2rem]">
+        The Convenience Store
+      </h1>
       {!keyword ? <Header /> : null}
       {isLoading ? (
         <Loader />

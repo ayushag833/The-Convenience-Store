@@ -3,7 +3,7 @@ import HeartIcon from "./HeartIcon";
 
 const Product = ({ product }) => {
   return (
-    <div className="w-[30rem] ml-[2rem] p-3 relative">
+    <div className="w-[27rem] ml-[2rem] p-3 relative">
       <div className="relative">
         <img
           src={product.image}

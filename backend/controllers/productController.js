@@ -75,7 +75,7 @@ const removeProduct = asyncHandler(async (req, res) => {
 
 const fetchProducts = asyncHandler(async (req, res) => {
   try {
-    const pageSize = 6;
+    const pageSize = 9;
 
     const keyword = req.query.keyword
       ? { name: { $regex: req.query.keyword, $options: "i" } }

@@ -16,7 +16,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="flex justify-around">
+      <div className="flex justify-around ml-2">
         <div className="xl:block lg:hidden md:hidden:sm:hidden">
           <div className="grid grid-cols-2">
             {data.map((product) => (
