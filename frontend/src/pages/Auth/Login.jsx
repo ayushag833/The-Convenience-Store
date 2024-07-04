@@ -34,13 +34,15 @@ const Login = () => {
       const res = await login({ email, password }).unwrap();
       dispatch(setCredentials(res));
       navigate(redirect);
-      Cookies.set("JWT", res.token, {
-        httpOnly: true,
+      console.log(res.token);
+
+      Cookies.set("JWT-token", res.token, {
+        httpOnly: false,
         secure: true,
         sameSite: "none",
-        maxAge: 30 * 24 * 60 * 60 * 1000,
+        expires: 30 * 24 * 60 * 60 * 1000,
       });
-      toast.success("User successfully loggedin");
+      toast.success("User successfully logged in");
     } catch (err) {
       toast.error(err?.data || err.error);
       console.log(err);
