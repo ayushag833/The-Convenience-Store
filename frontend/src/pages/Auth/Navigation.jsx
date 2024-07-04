@@ -14,6 +14,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useLogoutMutation } from "../../redux/api/usersApiSlice";
 import { logout } from "../../redux/features/auth/authSlice";
 import FavoritesCount from "../Products/FavoritesCount";
+import Cookies from "js-cookie";
 
 const Navigation = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -40,6 +41,7 @@ const Navigation = () => {
       await logoutApiCall().unwrap();
       dispatch(logout());
       navigate("/login");
+      Cookies.remove("JWT");
     } catch (error) {
       console.log(error);
     }

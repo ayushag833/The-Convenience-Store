@@ -5,6 +5,7 @@ import Loader from "../../components/Loader";
 import { useRegisterMutation } from "../../redux/api/usersApiSlice";
 import { setCredentials } from "../../redux/features/auth/authSlice";
 import { toast } from "react-toastify";
+import Cookies from "js-cookie";
 
 const Register = () => {
   const [username, setName] = useState("");
@@ -39,6 +40,12 @@ const Register = () => {
         const res = await register({ username, email, password }).unwrap();
         dispatch(setCredentials(res));
         navigate(redirect);
+        Cookies.set("JWT", res.token, {
+          httpOnly: true,
+          secure: true,
+          sameSite: "none",
+          maxAge: 30 * 24 * 60 * 60 * 1000,
+        });
         toast.success("User successfully registered");
       } catch (err) {
         console.log(err);
