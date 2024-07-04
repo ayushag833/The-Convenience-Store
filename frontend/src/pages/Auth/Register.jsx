@@ -40,9 +40,13 @@ const Register = () => {
         const res = await register({ username, email, password }).unwrap();
         dispatch(setCredentials(res));
         navigate(redirect);
-        console.log(res.token);
-        Cookies.set("JWT-token", res.token);
-
+        // Cookies.set("JWT-token", res.token, {
+        //   httpOnly: false,
+        //   secure: true,
+        //   sameSite: "none",
+        //   expires: 30 * 24 * 60 * 60 * 1000,
+        // });
+        Cookies.set("JWT", res.token);
         toast.success("User successfully registered");
       } catch (err) {
         console.log(err);
