@@ -68,13 +68,11 @@ const AdminDashboard = () => {
   });
 
   useEffect(() => {
-    console.log(salesDetail);
     if (salesDetail) {
       const formattedSalesDate = salesDetail.map((item) => ({
         x: item._id,
         y: item.totalSales,
       }));
-      console.log(formattedSalesDate);
 
       setState((prevState) => ({
         ...prevState,
