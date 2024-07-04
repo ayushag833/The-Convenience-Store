@@ -41,12 +41,7 @@ const Register = () => {
         dispatch(setCredentials(res));
         navigate(redirect);
         console.log(res.token);
-        Cookies.set("JWT-token", res.token, {
-          httpOnly: false,
-          secure: true,
-          sameSite: "none",
-          expires: 30 * 24 * 60 * 60 * 1000,
-        });
+        Cookies.set("JWT-token", res.token);
 
         toast.success("User successfully registered");
       } catch (err) {
