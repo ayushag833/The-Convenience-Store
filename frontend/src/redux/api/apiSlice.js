@@ -1,5 +1,6 @@
 import { fetchBaseQuery, createApi } from "@reduxjs/toolkit/query/react";
 import { BASE_URL } from "../constants";
+import { toast } from "react-toastify";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: BASE_URL,
@@ -9,6 +10,9 @@ const baseQuery = fetchBaseQuery({
         userInfo: { token },
       },
     } = getState();
+    if (!token) {
+      toast.error("Invalid Details");
+    }
     headers.set("Authorization", `Bearer ${token}`);
     return headers;
   },
