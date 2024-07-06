@@ -2,19 +2,15 @@ import JWT from "jsonwebtoken";
 import User from "../models/userModel.js";
 import asyncHandler from "./asyncHandler.js";
 
-// const getCookieFromFrontend = async (req, res, next) => {
-//   try {
-//     const token = req.body;
-//     return token;
-//   } catch (error) {
-//     res.status(401);
-//     res.send("Getting token from frontend failed!");
-//   }
-// };
-
 const authenticate = asyncHandler(async (req, res, next) => {
-  const token = req.cookies.JWT;
-  console.log(token);
+  const { authorization } = req.headers;
+  let token;
+  if (authorization && authorization.startsWith("Bearer ")) {
+    token = authorization.split(" ")[1];
+  } else {
+    return res.status(401).json({ message: "Authorization header missing" });
+  }
+
   if (token) {
     try {
       const decoded = JWT.verify(token, process.env.JWT_SECRET);

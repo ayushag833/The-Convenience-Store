@@ -46,7 +46,7 @@ const Register = () => {
         //   sameSite: "none",
         //   expires: 30 * 24 * 60 * 60 * 1000,
         // });
-        Cookies.set("JWT", res.token);
+        // Cookies.set("JWT", res.token);
         toast.success("User successfully registered");
       } catch (err) {
         console.log(err);

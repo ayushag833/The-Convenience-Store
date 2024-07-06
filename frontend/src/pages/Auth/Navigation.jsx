@@ -41,7 +41,7 @@ const Navigation = () => {
       await logoutApiCall().unwrap();
       dispatch(logout());
       navigate("/login");
-      Cookies.remove("JWT");
+      // Cookies.remove("JWT");
     } catch (error) {
       console.log(error);
     }

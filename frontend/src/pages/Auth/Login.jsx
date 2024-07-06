@@ -34,7 +34,7 @@ const Login = () => {
       const res = await login({ email, password }).unwrap();
       dispatch(setCredentials(res));
       navigate(redirect);
-      Cookies.set("JWT", res.token);
+      // Cookies.set("JWT", res.token);
       // Cookies.set("JWT-token", res.token, {
       //   httpOnly: false,
       //   secure: true,
