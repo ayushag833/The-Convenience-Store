@@ -6,14 +6,9 @@ const baseQuery = fetchBaseQuery({
   baseUrl: BASE_URL,
   prepareHeaders: (headers, { getState }) => {
     const {
-      auth: {
-        userInfo: { token },
-      },
+      auth: { userInfo },
     } = getState();
-    if (!token) {
-      toast.error("Invalid Details");
-    }
-    headers.set("Authorization", `Bearer ${token}`);
+    headers.set("Authorization", `Bearer ${userInfo?.token}`);
     return headers;
   },
 });
