@@ -5,7 +5,6 @@ import Loader from "../../components/Loader";
 import { useLoginMutation } from "../../redux/api/usersApiSlice";
 import { setCredentials } from "../../redux/features/auth/authSlice";
 import { toast } from "react-toastify";
-import Cookies from "js-cookie";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -34,13 +33,6 @@ const Login = () => {
       const res = await login({ email, password }).unwrap();
       dispatch(setCredentials(res));
       navigate(redirect);
-      // Cookies.set("JWT", res.token);
-      // Cookies.set("JWT-token", res.token, {
-      //   httpOnly: false,
-      //   secure: true,
-      //   sameSite: "none",
-      //   expires: 30 * 24 * 60 * 60 * 1000,
-      // });
       toast.success("User successfully logged in");
     } catch (err) {
       toast.error(err?.data || err.error);
