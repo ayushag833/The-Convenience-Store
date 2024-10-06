@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -29,6 +29,17 @@ const ProductDetails = () => {
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
+
+  const images = [
+    "https://m.media-amazon.com/images/I/51FNnHjzhQL._SL1200_.jpg",
+    "https://m.media-amazon.com/images/I/718BamtQcDL._SL1500_.jpg",
+    "https://m.media-amazon.com/images/I/71pyO5+Dn5L._SL1500_.jpg",
+    "https://m.media-amazon.com/images/I/71HTh-leeyL._SL1500_.jpg",
+  ];
+
+  const [currImage, setCurrImage] = useState(images[0]);
+  const ref = useRef(null);
+  const Inref = useRef(null);
 
   const {
     data: product,
@@ -63,6 +74,50 @@ const ProductDetails = () => {
     navigate("/cart");
   };
 
+  // const magnify = (event) => {
+  //   const magnifyImage = ref.current;
+  //   magnifyImage.className =
+  //     "left-[55rem] w-[28rem] h-[20rem] absolute border border-sky-500";
+  //   // magnifyImage.style.background =
+  //   //   "url('https://m.media-amazon.com/images/I/51FNnHjzhQL._SL1200_.jpg') 300px 400px";
+  //   magnifyImage.style.background = `url('https://m.media-amazon.com/images/I/51FNnHjzhQL._SL1200_.jpg') ${event.offsetX} ${event.offsetY}`;
+  // };
+  // console.log();
+  // const removeMagnify = () => {
+  //   const magnifyImage = ref.current;
+  //   magnifyImage.className = "w-0";
+  // };
+
+  // const magnify = (event) => {
+  //   console.log("Mouse entered magnify area");
+  //   const magnifyImage = ref.current;
+  //   const magnifymage = Inref.current;
+  //   const imgRect = magnifymage.getBoundingClientRect();
+
+  //   const offsetX = event.clientX - imgRect.left;
+  //   const offsetY = event.clientY - imgRect.top;
+
+  //   const xPercent = (offsetX / imgRect.width) * 100;
+  //   const yPercent = (offsetY / imgRect.height) * 100;
+
+  //   magnifyImage.style.backgroundImage = `url('${currImage}')`;
+  //   magnifyImage.style.backgroundRepeat = "no-repeat";
+  //   magnifyImage.style.backgroundPosition = `${xPercent}% ${yPercent}%`;
+  //   magnifyImage.style.backgroundSize = "200%";
+  //   magnifyImage.style.width = "400px";
+  //   magnifyImage.style.height = "400px";
+  //   magnifyImage.style.position = "absolute";
+  //   magnifyImage.style.left = "55rem";
+  // };
+
+  // const removeMagnify = () => {
+  //   console.log("Mouse left magnify area");
+  //   const magnifyImage = ref.current;
+  //   magnifyImage.style.backgroundImage = "none";
+  //   magnifyImage.style.width = "0";
+  //   magnifyImage.style.height = "0";
+  // };
+
   return (
     <>
       <div>
@@ -81,13 +136,30 @@ const ProductDetails = () => {
       ) : (
         <>
           <div className="flex flex-wrap relative items-between mt-[2rem] ml-[10rem]">
-            <div>
+            <div className="w-full">
+              {/* <div>
+                {images?.map((image, ind) => (
+                  <div key={ind} onClick={() => setCurrImage(image)}>
+                    <img
+                      src={image}
+                      alt="Product Image"
+                      className="w-full xl:w-[10rem] mb-2 lg:w-[45rem] md:w-[30rem] sm:w-[20rem] mr-[2rem] cursor-pointer"
+                    />
+                  </div>
+                ))}
+              </div> */}
               <img
                 src={product.image}
                 alt={product.name}
+                // onMouseMove={magnify}
+                // ref={Inref}
+                // onMouseLeave={removeMagnify}
                 className="w-full xl:w-[50rem] lg:w-[45rem] md:w-[30rem] sm:w-[20rem] mr-[2rem]"
               />
-
+              {/* <div
+                ref={ref}
+                className="left-[5rem] w-[30rem] h-[30rem] absolute border-8 border-sky-500"
+              ></div> */}
               <HeartIcon product={product} />
             </div>
 
