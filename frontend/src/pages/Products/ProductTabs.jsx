@@ -31,7 +31,7 @@ const ProductTabs = ({
     <div className="flex flex-col md:flex-row">
       <section className="mr-[5rem]">
         <div
-          className={`flex-1 p-4 cursor-pointer text-lg ${
+          className={`flex-1 p-4 cursor-pointer text-lg whitespace-nowrap ${
             activeTab === 1 ? "font-bold" : ""
           }`}
           onClick={() => handleTabClick(1)}
@@ -39,7 +39,7 @@ const ProductTabs = ({
           Write Your Review
         </div>
         <div
-          className={`flex-1 p-4 cursor-pointer text-lg ${
+          className={`flex-1 p-4 cursor-pointer text-lg whitespace-nowrap ${
             activeTab === 2 ? "font-bold" : ""
           }`}
           onClick={() => handleTabClick(2)}
@@ -47,7 +47,7 @@ const ProductTabs = ({
           All Reviews
         </div>
         <div
-          className={`flex-1 p-4 cursor-pointer text-lg ${
+          className={`flex-1 p-4 cursor-pointer text-lg whitespace-nowrap ${
             activeTab === 3 ? "font-bold" : ""
           }`}
           onClick={() => handleTabClick(3)}
