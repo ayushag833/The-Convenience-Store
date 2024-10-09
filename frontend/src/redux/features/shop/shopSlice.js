@@ -22,9 +22,9 @@ const shopSlice = createSlice({
     setChecked: (state, action) => {
       state.checked = action.payload;
     },
-    setRadio: (state, action) => {
-      state.radio = action.payload;
-    },
+    // setRadio: (state, action) => {
+    //   state.radio = action.payload;
+    // },
     // setSelectedBrand: (state, action) => {
     //   state.selectedBrand = action.payload;
     // },
@@ -35,7 +35,7 @@ export const {
   setCategories,
   setProducts,
   setChecked,
-  setRadio,
+  // setRadio,
   // setSelectedBrand,
 } = shopSlice.actions;
 
