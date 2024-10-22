@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useGetProductsQuery } from "../redux/api/productApiSlice";
 import Header from "../components/Header";
 import Product from "./Products/Product";
+import Loader from "../components/Loader";
 
 const Home = () => {
   const { keyword } = useParams();
@@ -29,11 +30,15 @@ const Home = () => {
 
         <div>
           <div className="flex justify-center flex-wrap mt-[2rem]">
-            {data?.products?.map((product) => (
-              <div key={product._id}>
-                <Product product={product} />
-              </div>
-            ))}
+            {!data ? (
+              <Loader />
+            ) : (
+              data?.products?.map((product) => (
+                <div key={product._id}>
+                  <Product product={product} />
+                </div>
+              ))
+            )}
           </div>
         </div>
       </>
