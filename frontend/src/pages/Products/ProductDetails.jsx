@@ -75,20 +75,6 @@ const ProductDetails = () => {
   };
 
   // const magnify = (event) => {
-  //   const magnifyImage = ref.current;
-  //   magnifyImage.className =
-  //     "left-[55rem] w-[28rem] h-[20rem] absolute border border-sky-500";
-  //   // magnifyImage.style.background =
-  //   //   "url('https://m.media-amazon.com/images/I/51FNnHjzhQL._SL1200_.jpg') 300px 400px";
-  //   magnifyImage.style.background = `url('https://m.media-amazon.com/images/I/51FNnHjzhQL._SL1200_.jpg') ${event.offsetX} ${event.offsetY}`;
-  // };
-  // console.log();
-  // const removeMagnify = () => {
-  //   const magnifyImage = ref.current;
-  //   magnifyImage.className = "w-0";
-  // };
-
-  // const magnify = (event) => {
   //   console.log("Mouse entered magnify area");
   //   const magnifyImage = ref.current;
   //   const magnifymage = Inref.current;
@@ -100,14 +86,16 @@ const ProductDetails = () => {
   //   const xPercent = (offsetX / imgRect.width) * 100;
   //   const yPercent = (offsetY / imgRect.height) * 100;
 
-  //   magnifyImage.style.backgroundImage = `url('${currImage}')`;
+  //   // magnifyImage.style.backgroundImage = `url('${currImage}')`;
+  //   magnifyImage.style.backgroundImage = `url('${product.image}')`;
   //   magnifyImage.style.backgroundRepeat = "no-repeat";
   //   magnifyImage.style.backgroundPosition = `${xPercent}% ${yPercent}%`;
-  //   magnifyImage.style.backgroundSize = "200%";
+  //   magnifyImage.style.backgroundSize = "300%";
   //   magnifyImage.style.width = "400px";
   //   magnifyImage.style.height = "400px";
   //   magnifyImage.style.position = "absolute";
   //   magnifyImage.style.left = "55rem";
+  //   magnifyImage.style.top = "0rem";
   // };
 
   // const removeMagnify = () => {
@@ -154,11 +142,12 @@ const ProductDetails = () => {
                 // onMouseMove={magnify}
                 // ref={Inref}
                 // onMouseLeave={removeMagnify}
+                // className="w-full xl:w-[50rem] lg:w-[45rem] md:w-[30rem] sm:w-[20rem] mr-[2rem] cursor-crosshair"
                 className="w-full xl:w-[50rem] lg:w-[45rem] md:w-[30rem] sm:w-[20rem] mr-[2rem]"
               />
               {/* <div
                 ref={ref}
-                className="left-[5rem] w-[30rem] h-[30rem] absolute border-8 border-sky-500"
+                className="left-[5rem] w-[30rem] h-[30rem] absolute"
               ></div> */}
               <HeartIcon product={product} />
             </div>
